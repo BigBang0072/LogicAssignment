@@ -3,13 +3,18 @@
 #include <stdlib.h>
 
 struct node{
-	node* leftPointer;
-	node* rightPointer;
+	struct node* leftPointer;
+	struct node* rightPointer;
 	char data;
 };
 
+void initializeStack(int lengthStack,struct node* stack[]);
+struct node* giveParseTree(int lengthStack,char postOrderStack[]);
+struct node* giveNewNode(char data,struct node* leftPointer,struct node* rightPointer);
 
 int main(){
+	char test[10]={'p','q','+'};
+	struct node* head=giveParseTree(3,test);
 
 	return 0;
 }
