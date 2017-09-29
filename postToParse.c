@@ -8,31 +8,8 @@ struct node{
 	char data;
 };
 
-void printInfix(struct node* node){
 
-	if(node == NULL){
-		return;
-	}
-
-	// if (node->leftPointer != NULL)
-	// {
-	// 	printf("( ");
-	// }
-	printInfix(node->leftPointer);
-
-	printf("%c ", node->data);
-	// if (node->data == '~')
-	// {
-	// 	printf("(");
-	// }
-
-	printInfix(node->rightPointer);
-	// if (node->rightPointer)
-	// {
-	// 	printf(")");
-	// }
-}
-
+void printInfix(struct node* node);
 void initializeStack(int lengthStack,struct node* stack[]);
 struct node* giveParseTree(int lengthStack,char postOrderStack[]);
 struct node* giveNewNode(char data,struct node* leftPointer,struct node* rightPointer);
@@ -88,7 +65,7 @@ struct node* giveParseTree(int lengthStack,char postOrderStack[]){
 		else{
 			tos++;
 			struct node* newNode=giveNewNode(data,NULL,NULL);
-			nodeStack[i]=newNode;
+			nodeStack[tos]=newNode;
 		}
 	}
 	return nodeStack[0];
@@ -99,4 +76,29 @@ void initializeStack(int lengthStack,struct node* stack[]){
 	for(int i=0;i<lengthStack;i++){
 		stack[i]=NULL;//Pointing the stack element to NULL.
 	}
+}
+
+void printInfix(struct node* node){
+
+	if(node == NULL){
+		return;
+	}
+
+	// if (node->leftPointer != NULL)
+	// {
+	// 	printf("( ");
+	// }
+	printInfix(node->leftPointer);
+
+	printf("%c ", node->data);
+	// if (node->data == '~')
+	// {
+	// 	printf("(");
+	// }
+
+	printInfix(node->rightPointer);
+	// if (node->rightPointer)
+	// {
+	// 	printf(")");
+	// }
 }
