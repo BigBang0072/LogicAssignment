@@ -8,14 +8,40 @@ struct node{
 	char data;
 };
 
+void printInfix(struct node* node){
+
+	if(node == NULL){
+		return;
+	}
+
+	// if (node->leftPointer != NULL)
+	// {
+	// 	printf("( ");
+	// }
+	printInfix(node->leftPointer);
+
+	printf("%c ", node->data);
+	// if (node->data == '~')
+	// {
+	// 	printf("(");
+	// }
+
+	printInfix(node->rightPointer);
+	// if (node->rightPointer)
+	// {
+	// 	printf(")");
+	// }
+}
+
 void initializeStack(int lengthStack,struct node* stack[]);
 struct node* giveParseTree(int lengthStack,char postOrderStack[]);
 struct node* giveNewNode(char data,struct node* leftPointer,struct node* rightPointer);
 
 int main(){
-	char test[10]={'p','q','+'};
+	char test[10]={'5','1','2','+','4','*','+','3','+'};
 	struct node* head=giveParseTree(3,test);
-
+	printInfix(head);
+	printf("\n");
 	return 0;
 }
 

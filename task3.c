@@ -24,7 +24,7 @@ void printInfix(node* node){
 		printf("(");
 	}
 	printInfix(node->leftPointer);
-]
+
 	printf("%c ", node->data);
 	if (node->data == '~')
 	{
