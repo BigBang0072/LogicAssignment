@@ -16,7 +16,7 @@ struct node* giveNewNode(char data,struct node* leftPointer,struct node* rightPo
 
 int main(){
 	char test[10]={'5','1','2','+','4','*','+','3','+'};
-	struct node* head=giveParseTree(3,test);
+	struct node* head=giveParseTree(9,test);
 	printInfix(head);
 	printf("\n");
 	return 0;
@@ -84,21 +84,21 @@ void printInfix(struct node* node){
 		return;
 	}
 
-	// if (node->leftPointer != NULL)
-	// {
-	// 	printf("( ");
-	// }
+	if (node->leftPointer != NULL)
+	{
+		printf("( ");
+	}
 	printInfix(node->leftPointer);
 
 	printf("%c ", node->data);
-	// if (node->data == '~')
-	// {
-	// 	printf("(");
-	// }
+	if (node->data == '~')
+	{
+		printf(" (");
+	}
 
 	printInfix(node->rightPointer);
-	// if (node->rightPointer)
-	// {
-	// 	printf(")");
-	// }
+	if (node->rightPointer)
+	{
+		printf(") ");
+	}
 }
