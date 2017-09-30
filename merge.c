@@ -16,6 +16,7 @@ void printInfix(struct node* node);
 //HELPER FUNCTION Declaration
 void initializeBuffer(int lengthBuffer,char Buffer[]);
 int mapRankToOperator(char operation);
+void printPostfix(int lengthPostStack,char postStack[]);
 void initializeStack(int lengthStack,struct node* stack[]);
 struct node* giveNewNode(char data,struct node* leftPointer,struct node* rightPointer);
 
@@ -35,7 +36,6 @@ int main(){
 		i++;
 	}
 
-	printf("lenght: %d\n", lengthInfix);
 	// printf("%d %s\n",lengthInfix,infix);
 
 	//Initializing the Postfix Array.
@@ -45,7 +45,7 @@ int main(){
 
 	// 1. Calling the First Main function to convert the Infix to Postfix.
 	infixToPostfix(lengthInfix,infix,&lengthPostStack,postStack);
-	printf("In Postfix format : %s\n",postStack);
+	printPostfix(lengthPostStack,postStack);
 
 	// 2. Building the Parse tree from the Postfix format.
 	struct node* head=giveParseTree(lengthPostStack,postStack);
@@ -259,6 +259,13 @@ int mapRankToOperator(char operation){
 	return -1;//to take care of the "("" which is pushed inside the work buffer.
 	// The popping of work Stack of operator will only go until "(" cuz it will be in less rank
 	//than any of the current operator.
+}
+void printPostfix(int lengthPostStack,char postStack[]){
+	printf("Postfix : ");
+	for(int i=0;i<lengthPostStack;i++){
+		printf("%c",postStack[i]);
+	}
+	printf("\n");
 }
 void initializeStack(int lengthStack,struct node* stack[]){
 	//Initializing any stack(which is form of array of node's pointer)
