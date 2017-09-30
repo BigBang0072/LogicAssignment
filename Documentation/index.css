@@ -1,10 +1,11 @@
 *{
     line-height: 1.8em;
+    font-family: Helvetica, Futura, sans-serif;
 }
 
 /*Side Nav*/
 .sidenav {
-    width: 15%;
+    width: 20%;
     height: 100%; /* 100% Full-height */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
@@ -20,10 +21,10 @@
     padding: 8px 8px 8px 0px;
     padding-left: 20%;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
 }
 
 .sidenav a:hover{
@@ -32,7 +33,7 @@
 
 
 #main {
-    margin-left: 15%;
+    margin-left: 20%;
     padding: 20px;
 }
 
@@ -40,11 +41,13 @@ h1{
     width: 95%;
     border-bottom: 1px solid #ccc;
     padding: 10px;
+    color: #444;
 }
 
 h2{
     width: 95%;
     padding: 10px;
+    color: #222;
 }
 
 p{
