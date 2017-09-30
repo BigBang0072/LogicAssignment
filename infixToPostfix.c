@@ -2,12 +2,19 @@
 #include <math.h>
 #include <stdlib.h>
 
-int main(){
+int mapRankToOperator(char operation);
+void initializeBuffer(int lengthBuffer,char Buffer[]);
+void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postStack[]);
 
+int main(){
+	int lengthInfix=10,lengthPostStack;
+	char infix[10]={'(','p','*','q',')'};
+	char postStack[lengthInfix];
+	infixToPostfix(lengthInfix,infix,&lengthPostStack,postStack);
 	return 0;
 }
 
-void infixToPostfix(int lengthInfix,char infix[],int *lengthPostStack,char postStack[]){
+void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postStack[]){
 	/*
 
 	*/
@@ -66,11 +73,13 @@ void infixToPostfix(int lengthInfix,char infix[],int *lengthPostStack,char postS
 		}
 	}
 	while(wtos!=-1){
-		data=stackData[tos];
+		char data=workStack[wtos];
 		wtos--;
 		postTos++;
 		postStack[postTos]=data;
 	}
+
+	*lengthPostStack=postTos+1;
 }
 
 void initializeBuffer(int lengthBuffer,char Buffer[]){
@@ -83,16 +92,16 @@ int mapRankToOperator(char operation){
 
 	// We are giving rank in the magnitude of number.
 	// 4:Best and 1:Last
-	if(char=='~'){
+	if(operation =='~'){
 		return 4;
 	}
-	else if(char=='*'){
+	else if(operation =='*'){
 		return 3;
 	}
-	else if(char=='+'){
+	else if(operation =='+'){
 		return 2;
 	}
-	else if(char=='>'){
+	else if(operation =='>'){
 		return 1;
 	}
 	return -1;//to take care of the ( which is pushed inside the work buffer.
