@@ -25,7 +25,7 @@ struct node* giveNewNode(char data,struct node* leftPointer,struct node* rightPo
 int main(){
 	//HAVE to take command line taking implementation here. (CHANGE)
 	int MAX_SIZE=50;
-	char infix[50];
+	char infix[MAX_SIZE];
 	scanf("%s",infix);
 	int lengthInfix=0;
 	for(int i=0;i<MAX_SIZE;i++){
@@ -37,14 +37,14 @@ int main(){
 		}
 
 	}
-	printf("%d %s\n",lengthInfix,infix);
+	//printf("%d %s\n",lengthInfix,infix);
 
 	//Initializing the Postfix Array.
 	int lengthPostStack;
 	char postStack[lengthInfix]; // Postfix Array.
+	initializeBuffer(lengthInfix,postStack);
 
 	// 1. Calling the First Main function to convert the Infix to Postfix.
-	initializeBuffer(lengthInfix,postStack);
 	infixToPostfix(lengthInfix,infix,&lengthPostStack,postStack);
 	printf("In Postfix format : %s\n",postStack);
 
@@ -85,7 +85,7 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 	int previousRank=0,currentRank=0;
 	for(int i=0;i<lengthInfix;i++){
 		char data=infix[i];//making a local copy of the current character in Infix.
-
+		//printf("%d %c\n",i,data);
 		//If out character is a operation.
 		if(data=='~' || data=='*' || data=='+' || data=='>'){
 			currentRank=mapRankToOperator(data);
@@ -111,7 +111,6 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 				workStack[wtos]=data;
 				previousRank=currentRank;
 			}
-
 		}
 
 
@@ -119,6 +118,7 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 		//If we encounter a parnthesis which referes to a specialized subtree in Binary tree representation.
 		else if(data=='('){
 			//The opening parenthesis represent private grouping of operation.
+			previousRank=mapRankToOperator(data);
 			wtos++;
 			workStack[wtos]=data;
 		}
@@ -134,6 +134,8 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 				stackData=workStack[wtos];
 			}
 			wtos--;
+			stackData=workStack[wtos];
+			previousRank=mapRankToOperator(stackData);
 		}
 
 
@@ -144,9 +146,11 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 			postTos++;
 			postStack[postTos]=data;
 		}
+		//printf("wtos :%d %d\n",wtos,previousRank);
+		//printf("%s\n\n",workStack);
 	}
 
-
+	//printf("FIRST PASS\n");
 
 	//Now putting the rest of left operations present in the workStack to
 	// the Postfix Stack.
@@ -154,6 +158,7 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 		char data=workStack[wtos];
 		wtos--;
 		postTos++;
+		//printf("%d %c\n",wtos,data);
 		postStack[postTos]=data;
 	}
 
