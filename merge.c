@@ -223,11 +223,11 @@ void printInfix(struct node* node){
 	printf("%c ", node->data);
 	if (node->data == '~')
 	{
-		printf(" (");
+		printf("( ");
 	}
 
 	printInfix(node->rightPointer);
-	if (node->rightPointer)
+	if (node->rightPointer != NULL)
 	{
 		printf(") ");
 	}
