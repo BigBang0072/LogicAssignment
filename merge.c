@@ -100,8 +100,12 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 				//operator in workStack becomes less than scanned rank.
 				do{
 					postTos++;
-					postStack[postTos]=data;
+					postStack[postTos]=workStack[wtos];
 					wtos--;
+					//In case we reach the end of workStack.
+					if(wtos==-1){
+						break;
+					}
 					char stackData=workStack[wtos];
 					previousRank=mapRankToOperator(stackData);
 				}while(currentRank<=previousRank);
