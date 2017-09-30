@@ -28,16 +28,15 @@ int main(){
 	char infix[MAX_SIZE];
 	scanf("%s",infix);
 	int lengthInfix=0;
-	for(int i=0;i<MAX_SIZE;i++){
-		if(infix[i]=='\0'){
-			break;
-		}
-		else{
-			lengthInfix++;
-		}
 
+	int i = 0;
+	while(infix[i] != '\0'){
+		lengthInfix++;
+		i++;
 	}
-	//printf("%d %s\n",lengthInfix,infix);
+
+	printf("lenght: %d\n", lengthInfix);
+	// printf("%d %s\n",lengthInfix,infix);
 
 	//Initializing the Postfix Array.
 	int lengthPostStack;
