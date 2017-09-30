@@ -2,9 +2,62 @@
 <html>
 <head>
 	<title>Documentation</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/<version tag>/showdown.min.js" type="text/javascript"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./code.css">
+	<link rel="stylesheet" type="text/css" href="./index.css">
+	<script type="text/javascript" src="highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
 </head>
 <body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="#inToPost">Infix To Postfix</a>
+  <a href="#binaryTree">Binary Parse Tree</a>
+  <a href="#traversal">Tree Traversal</a>
+  <a href="#">Output</a>
+  <a href="#">Analysis</a>
+</div>
+
+<div id="main">
+  <h1 id="inToPost">Converting Infix To Postfix</h1>
+  <p>
+  	Lorem Ipsum
+  </p>
+
+  <h1 id="binaryTree">Converting Postfix Expression into a rooted Binary Parse Tree</h1>
+  <p>
+  	Lorem Ipsum
+  </p>
+
+  <h1 id="traversal">Traversing binary tree to output Infix Expression</h1>
+  <h2>Inorder Traversal</h2>
+  <p>
+  	We can get the infix notation from the binary parse tree by using inorder traversal.<br>
+  	Inorder traversal contains the following steps:
+  	<ul type="disc">
+  		<li>Traverse Left Parse Tree</li>
+  		<li>Print current node</li>
+  		<li>Traverse Right Parse Tree</li>
+  	</ul>
+  </p>
+  <br>
+  <p>
+  	A recursive function <b>printInfix(struct node* node)</b> is used to traverse each sub tree.<br>
+  </p>
+  <p>
+  	Here, node is a pointer to the struct which contains a character (operator or operand) and pointers to the left child and right child of the tree :
+  </p>
+  <pre>
+  	<code>
+struct node{
+	struct node* leftPointer;
+	struct node* rightPointer;
+	char data;
+};
+  	</code>
+  </pre>
+</div>
 
 </body>
 </html>
