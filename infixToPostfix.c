@@ -7,10 +7,14 @@ void initializeBuffer(int lengthBuffer,char Buffer[]);
 void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postStack[]);
 
 int main(){
-	int lengthInfix=10,lengthPostStack;
-	char infix[10]={'(','p','*','q',')'};
+	int lengthInfix=7,lengthPostStack;
+	char infix[7]={'a','+','(','b','*','c',')'};
 	char postStack[lengthInfix];
+	initializeBuffer(lengthInfix,postStack);
 	infixToPostfix(lengthInfix,infix,&lengthPostStack,postStack);
+	for(int i=0;i<10;i++){
+		printf("%c ",postStack[i]);
+	}
 	return 0;
 }
 
