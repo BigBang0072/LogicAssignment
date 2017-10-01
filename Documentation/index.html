@@ -33,7 +33,7 @@
   Here, <b>lengthInfix</b> denotes the length of the infix string, <b>infix[ ]</b> is the infix string, <b>lengthPostStack</b> points to the postfix string length and <b>postStack</b> is an array in which we add the characters in postfix order.  
   </p>
   <p>
-    We assign ranks to all the operators according to their precedence. Create a temporary stack.
+    We assign ranks to all the operators according to their precedence. Create a temporary stack: <b>workStack[ ]</b>.
   </p>
   <p>
     To convert from infix to postfix iterate on the infix string and execute the following steps:
@@ -42,9 +42,18 @@
         If the character is an operand, add it to the postfix string directly. 
       </li>
       <li>
-        If the character is an operand, check its rank
+        If the character is an operand, check its rank. Push the operator to the workStack if it's rank is greater than the rank of the operator that is at the top of stack or if the workStack is empty. Otherwise pop all the operators from the workStack and add them to postfix string till the rank of the operator at the top of the stack is greater than or equal to the rank of the current operator.
+      </li>
+      <li>
+        If the character is an opening bracket then push it to the workStack, if it's a closing bracket then pop elements till we encounter the previous opening bracket. But we do not add the brackets to the postfix string.
       </li>
     </ul>
+    <p>
+      Finally pop all the renaming elements in the workStack and add them to postfix.
+    </p>
+    <p>
+      Thus the postfix string contains the postfix expressions.
+    </p>
   </p>
 
   <h1 id="binaryTree">Converting Postfix Expression into a rooted Binary Parse Tree</h1>
