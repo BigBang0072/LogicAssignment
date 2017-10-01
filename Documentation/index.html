@@ -27,7 +27,18 @@
 
   <h1 id="binaryTree">Converting Postfix Expression into a rooted Binary Parse Tree</h1>
   <p>
-  	Lorem Ipsum
+    node is a pointer to the struct which contains a character (operator or operand) and pointers to the left child and right child of the tree :
+  </p>
+  <p>
+  	  <pre>
+        <code>
+    struct node{
+      struct node* leftPointer;
+      struct node* rightPointer;
+      char data;
+    };
+        </code>
+      </pre>
   </p>
   <img src="maketree.gif" height="500px" width="500px" alt="Tree animation">
 
@@ -46,16 +57,17 @@
   <p>
   	A recursive function <b>printInfix(struct node* node)</b> is used to traverse each sub tree.<br>
   </p>
-  <p>
-  	Here, node is a pointer to the struct which contains a character (operator or operand) and pointers to the left child and right child of the tree :
-  </p>
+
   <pre>
   	<code>
-struct node{
-	struct node* leftPointer;
-	struct node* rightPointer;
-	char data;
-};
+void printInfix(struct node* node){
+    if(node == NULL){                            // if we reach a NULL node (child of a leaf) then return
+        return;
+    }
+    printInfix(node->leftPointer);           // traverse left subtree 
+    printf("%c ", node->data);               // print Current node data
+    printInfix(node->rightPointer);        // traverse right subtree
+}
   	</code>
   </pre>
 
