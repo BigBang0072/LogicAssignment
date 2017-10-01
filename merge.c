@@ -220,21 +220,21 @@ void printInfix(struct node* node){
 
 	if (node->leftPointer != NULL)
 	{
-		printf("( ");
+		printf("(");
 	}
 	printInfix(node->leftPointer);
 
 	if (node->data == '~')
 	{
-		printf("( ");
+		printf("(");
 	}
-	printf("%c ", node->data);
+	printf("%c", node->data);
 	
 
 	printInfix(node->rightPointer);
 	if (node->rightPointer != NULL)
 	{
-		printf(") ");
+		printf(")");
 	}
 }
 
