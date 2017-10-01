@@ -53,10 +53,12 @@ h2{
 p{
     padding-left: 10px;
     font-size: 1.2em;
+    width: 90%;
 }
 
 li{
     font-size: 1.2em;
+    width: 80%;
 }
 code{
     font-size: 1.2em;

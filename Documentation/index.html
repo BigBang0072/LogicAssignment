@@ -27,18 +27,44 @@
 
   <h1 id="binaryTree">Converting Postfix Expression into a rooted Binary Parse Tree</h1>
   <p>
-    node is a pointer to the struct which contains a character (operator or operand) and pointers to the left child and right child of the tree :
+    We make the tree using nodes. Each node is a pointer to the struct which contains a character (operator or operand) and pointers to the left child and right child of the tree:
   </p>
   <p>
   	  <pre>
         <code>
     struct node{
-      struct node* leftPointer;
-      struct node* rightPointer;
-      char data;
+        struct node* leftPointer;
+        struct node* rightPointer;
+        char data;
     };
         </code>
       </pre>
+  </p>
+  <p>
+    Declare a function giveParseTree():
+  </p>
+  <pre>
+    <code>
+      struct node* giveParseTree(int lengthStack,char postOrderStack[ ])
+    </code>
+  </pre>
+  <p>
+    The above function returns the pointer to the root node of the Binary Tree. The first parameter lengthStack denotes the length of the postfix string and postOrderStack[ ] denotes the postfix string. <br>
+    Then initialize a stack namely nodeStack of maximum length eqaul to lengthStack.<br>
+    After that we iterate for all characters of the postfix string:
+    <ul type="disc">
+      <li>
+        If character is an atomic preposition, then push a node to the with both left and right pointers as NULL
+        stack and increament the stack pointer.
+      </li>
+      <li>
+        If the character is NOT(~) then create a node with left pointer as NULL and the right pointer points to the node that popped from
+        the top of stack. This node is then pushed to the stack.
+      </li>
+      <li>
+        If the character is a binary operator 
+      </li>
+    </ul>
   </p>
   <img src="maketree.gif" height="500px" width="500px" alt="Tree animation">
 
@@ -48,9 +74,9 @@
   	We can get the infix notation from the binary parse tree by using inorder traversal.<br>
   	Inorder traversal contains the following steps:
   	<ul type="disc">
-  		<li>Traverse Left Parse Tree</li>
+  		<li>Traverse Left Subtree</li>
   		<li>Print current node</li>
-  		<li>Traverse Right Parse Tree</li>
+  		<li>Traverse Right Subtree</li>
   	</ul>
   </p>
   <br>
