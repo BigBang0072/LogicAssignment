@@ -22,7 +22,29 @@
 <div id="main">
   <h1 id="inToPost">Converting Infix To Postfix</h1>
   <p>
-  	Lorem Ipsum
+  	To make a postfix expression from infix we use the function:
+  </p>
+  <pre>
+    <code>
+      void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postStack[])
+    </code>
+  </pre>
+  <p>
+  Here, <b>lengthInfix</b> denotes the length of the infix string, <b>infix[ ]</b> is the infix string, <b>lengthPostStack</b> points to the postfix string length and <b>postStack</b> is an array in which we add the characters in postfix order.  
+  </p>
+  <p>
+    We assign ranks to all the operators according to their precedence. Create a temporary stack.
+  </p>
+  <p>
+    To convert from infix to postfix iterate on the infix string and execute the following steps:
+    <ul type="disc">
+      <li>
+        If the character is an operand, add it to the postfix string directly. 
+      </li>
+      <li>
+        If the character is an operand, check its rank
+      </li>
+    </ul>
   </p>
 
   <h1 id="binaryTree">Converting Postfix Expression into a rooted Binary Parse Tree</h1>
@@ -49,7 +71,7 @@
     </code>
   </pre>
   <p>
-    The above function returns the pointer to the root node of the Binary Tree. The first parameter lengthStack denotes the length of the postfix string and postOrderStack[ ] denotes the postfix string. <br>
+    The above function returns the pointer to the root node of the Binary Tree. The first parameter <b>lengthStack</b> denotes the length of the postfix string and <b>postOrderStack[ ]</b> denotes the postfix string. <br>
     Then initialize a stack namely nodeStack of maximum length eqaul to lengthStack.<br>
     After that we iterate for all characters of the postfix string:
     <ul type="disc">
@@ -58,15 +80,20 @@
         stack and increament the stack pointer.
       </li>
       <li>
-        If the character is NOT(~) then create a node with left pointer as NULL and the right pointer points to the node that popped from
-        the top of stack. This node is then pushed to the stack.
+        If the character is NOT(~) then create a node with left pointer as NULL and the right pointer points to the node that is popped from the top of stack. This node is then pushed to the stack.
       </li>
       <li>
-        If the character is a binary operator 
+        If the character is a binary operator then create a node whose right pointer points to the node that is popped from top of stack and left pointer points to the second node that is popped from the stack. This node is then pushed to the stack. 
       </li>
     </ul>
   </p>
-  <img src="maketree.gif" height="500px" width="500px" alt="Tree animation">
+  <p>
+    Thus, finally we have only one node remaining in the stack which is the root node of the tree.
+  </p>
+  <br>
+  <div class="imageContainer">
+    <img src="maketree.gif" height="500px" width="500px" alt="Tree animation">
+  </div>
 
   <h1 id="traversal">Traversing binary tree to output Infix Expression</h1>
   <h2>Inorder Traversal</h2>
@@ -96,9 +123,10 @@ void printInfix(struct node* node){
 }
   	</code>
   </pre>
+  <div class="imageContainer">
+    <img src="parsetree.gif" height="500px" width="500px" alt="Tree Treaversal animation">
+  </div>
 
-  <img src="parsetree.gif" height="500px" width="500px" alt="Tree Treaversal animation">
-  
   <h1 id="output">Output</h1>
 
   <h1 id="analysis">Analysis</h1>

@@ -63,6 +63,15 @@ li{
 code{
     font-size: 1.2em;
 }
+.imageContainer{
+    width: 100%;
+    text-align: center;
+}
+
+img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 /*for phones*/
 @media screen and (max-width: 1200px) {
