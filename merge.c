@@ -44,23 +44,40 @@ int main(){
 	initializeBuffer(lengthInfix,postStack);
 
 	// 1. Calling the First Main function to convert the Infix to Postfix.
+
+	printf("\n");
+	printf("Converting Infix to Postfix expression...\n");
 	infixToPostfix(lengthInfix,infix,&lengthPostStack,postStack);
 	printPostfix(lengthPostStack,postStack);
 
 	// 2. Building the Parse tree from the Postfix format.
+
+	printf("Creating Parse tree from Postfix expression...\n");
 	struct node* head=giveParseTree(lengthPostStack,postStack);
+	printf("Parse tree created.\n\n");
 
 	// 3. Printing the Parse tree to get back Infix Format.(fully Paranthesized)
+	
+	printf("Traversing the tree...\n");
+	printf("Printing the infix expression...\n");
+	printf("Infix : ");
+
 	printInfix(head);
-	printf("\n");
+	printf("\n\n");
 
 	return 0;
 }
 
 
 
-//MAIN FUNCTION Implementation.
+//TASK Implementation.
+
+//Task 1
+
 void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postStack[]){
+
+	
+
 	/*  INPUT:1.Number of Character in Infix array.
 			  2.Infix character Array.
 			  3.Pointer to length of Postfix Form (for iterating over in next task.)
@@ -169,6 +186,8 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 	// iterating in the array in next task.
 	*lengthPostStack=postTos+1;
 }
+
+//Task 2
 struct node* giveParseTree(int lengthStack,char postOrderStack[]){
 	/*
 		INPUT : 1.The Current Length of stack (actual length counting from 1).
@@ -207,11 +226,15 @@ struct node* giveParseTree(int lengthStack,char postOrderStack[]){
 		}
 	}
 
+	
 
 	// After the merging of all the proposition with the approriate operator
 	// we will be left with only one node that is the require "BINARY-Parse Tree"
 	return nodeStack[0]; //hence returning the final left tree pointer.
 }
+
+
+//Task 3
 void printInfix(struct node* node){
 
 	if(node == NULL){
@@ -266,11 +289,13 @@ int mapRankToOperator(char operation){
 	//than any of the current operator.
 }
 void printPostfix(int lengthPostStack,char postStack[]){
+	
+	printf("Printing Postfix expression...\n");	
 	printf("Postfix : ");
 	for(int i=0;i<lengthPostStack;i++){
 		printf("%c",postStack[i]);
 	}
-	printf("\n");
+	printf("\n\n");
 }
 void initializeStack(int lengthStack,struct node* stack[]){
 	//Initializing any stack(which is form of array of node's pointer)
