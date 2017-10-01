@@ -1,0 +1,23 @@
+{
+  "name": "logic",
+  "version": "1.0.0",
+  "description": "logic assignment",
+  "main": "index.js",
+  "dependencies": {
+    "gnomon": "^1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BigBang0072/LogicAssignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BigBang0072/LogicAssignment/issues"
+  },
+  "homepage": "https://github.com/BigBang0072/LogicAssignment#readme"
+}
