@@ -45,9 +45,9 @@ int main(){
 
 	// 1. Calling the First Main function to convert the Infix to Postfix.
 
-	printf("\n");
-	printf("Converting Infix to Postfix expression...\n");
+	printf("\nConverting Infix to Postfix expression...\n");
 	infixToPostfix(lengthInfix,infix,&lengthPostStack,postStack);
+	printf("Converted to Postfix\n");
 	printPostfix(lengthPostStack,postStack);
 
 	// 2. Building the Parse tree from the Postfix format.
@@ -60,10 +60,10 @@ int main(){
 	
 	printf("Traversing the tree...\n");
 	printf("Printing the infix expression...\n");
-	printf("Infix : ");
+	printf("Infix :");
 
 	printInfix(head);
-	printf("\n\n");
+	printf("\nPrint Complete\n");
 
 	return 0;
 }
