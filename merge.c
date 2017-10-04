@@ -36,7 +36,6 @@ int main(){
 		i++;
 	}
 
-	// printf("%d %s\n",lengthInfix,infix);
 
 	//Initializing the Postfix Array.
 	int lengthPostStack;
@@ -103,7 +102,7 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 	int previousRank=0,currentRank=0;
 	for(int i=0;i<lengthInfix;i++){
 		char data=infix[i];//making a local copy of the current character in Infix.
-		//printf("%d %c\n",i,data);
+		
 		//If out character is a operation.
 		if(data=='~' || data=='*' || data=='+' || data=='>'){
 			currentRank=mapRankToOperator(data);
@@ -166,11 +165,8 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 			postTos++;
 			postStack[postTos]=data;
 		}
-		//printf("wtos :%d %d\n",wtos,previousRank);
-		//printf("%s\n\n",workStack);
 	}
 
-	//printf("FIRST PASS\n");
 
 	//Now putting the rest of left operations present in the workStack to
 	// the Postfix Stack.
@@ -178,7 +174,6 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 		char data=workStack[wtos];
 		wtos--;
 		postTos++;
-		//printf("%d %c\n",wtos,data);
 		postStack[postTos]=data;
 	}
 
