@@ -24,8 +24,8 @@ struct node* giveNewNode(char data,struct node* leftPointer,struct node* rightPo
 
 //HANDLER
 int main(){
-	//HAVE to take command line taking implementation here. (CHANGE)
-	int MAX_SIZE=50;
+	//HAVE to take command line taking implementation here. 
+	int MAX_SIZE=100; //Default max size of input.
 	char infix[MAX_SIZE];
 	scanf("%s",infix);
 	int lengthInfix=0;
@@ -78,10 +78,12 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 
 	
 
-	/*  INPUT:1.Number of Character in Infix array.
-			  2.Infix character Array.
-			  3.Pointer to length of Postfix Form (for iterating over in next task.)
-			  4.To get the Postfix form in form of Character Array.
+	/*  INPUT:1.Number of Character in Infix array (DONE Automatically at command line inpu, just pass).
+			  2.Infix Array:Infix character Array. (Allocate and pass. Input is taken at commandline)
+			  				MAX SIZE: by default is 100.
+			  3.Actual length of Postfix:Pointer to length of Postfix Form (for iterating over in next task.)
+			  4.Postfix array:To get the Postfix form in form of Character Array.
+			  				MAX SIZE: allocate with size lengthInfix and pass.
 
 	    OUTPUT: None.
 
@@ -159,8 +161,6 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 		}
 
 
-
-
 		else{
 			//If operands are encountered, then directly push them to the Postfix Stack.
 			postTos++;
@@ -184,7 +184,8 @@ void infixToPostfix(int lengthInfix,char infix[],int* lengthPostStack,char postS
 
 	//Updating the length of the PostOrder stack for the furthur 
 	// iterating in the array in next task.
-	*lengthPostStack=postTos+1;
+	*lengthPostStack=postTos+1; //There was no need of pointer but to maintian the unofomity of 
+	//no return type in all the arguments.
 }
 
 //Task 2
@@ -236,27 +237,39 @@ struct node* giveParseTree(int lengthStack,char postOrderStack[]){
 
 //Task 3
 void printInfix(struct node* node){
+	/*
+		INPUT: 1. The pointer to the head (root) of the parse tree.
+		OUTPUT: None.
+
+		Comment: 'This code implements the inorder traversal of the parse tree
+					with added changes like printing of paranthesis and special
+					case handling of the negation.'
+	*/
 
 	if(node == NULL){
+		//If the tree ends here. This case will never come. But for safety.
 		return;
 	}
 
 	if (node->leftPointer != NULL)
 	{
+		//If we are moving to a new depth/(child in subtree) start with paranthesis.
 		printf("(");
 	}
-	printInfix(node->leftPointer);
+	printInfix(node->leftPointer);//Recursion step.Go tho the left child unitl we hit the bottom
 
 	if (node->data == '~')
 	{
+		//In case of negation we wont have a left child.(Special case handling for paranthesis).
 		printf("(");
 	}
-	printf("%c", node->data);
+	printf("%c", node->data);//Once the left children is printed. Print the current node data.
 	
 
-	printInfix(node->rightPointer);
+	printInfix(node->rightPointer);//rerurse to the right subtree.
 	if (node->rightPointer != NULL)
 	{
+		//finally when the right child of the node becomes Null. close paranthesis and return.
 		printf(")");
 	}
 }
