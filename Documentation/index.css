@@ -83,3 +83,13 @@ img{
         padding: 20px;
     }
 } 
+
+.doneBy{
+    color: #818181;
+}
+
+.pos-bottom{
+    position: absolute;
+    bottom: 100px;
+    margin-left: 20px;
+}
